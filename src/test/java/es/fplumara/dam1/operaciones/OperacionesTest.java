@@ -87,7 +87,18 @@ class OperacionesTest {
 //PENDIENTE  3.
 
 
+    @Test
+    @DisplayName("comprobaciónAssertThrows")
+    void lanzamientoIllegal() {
+
+        assertThrows(IllegalArgumentException.class, () -> Operaciones.media());
+        assertThrows(IllegalArgumentException.class, () -> Operaciones.media((double[]) null));
 
     }
+
+
+
+
+}
 
 
