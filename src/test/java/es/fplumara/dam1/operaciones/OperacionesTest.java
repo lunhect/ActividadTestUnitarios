@@ -45,7 +45,7 @@ class OperacionesTest {
 
     static Stream<Arguments> posiblesCasos() {
         return Stream.of(
-                Arguments.of(6.67,  new double[]{5.0, 7.0}),     //Hecho fallar aposta
+                Arguments.of(6.0, new double[]{5.0, 7.0}), //Hecho fallar aposta
                 Arguments.of(10.0, new double[]{10.0}),         // 10
                 Arguments.of(0.0,  new double[]{0.0, 0.0, 0.0}) // 0
         );
