@@ -3,12 +3,20 @@ package es.fplumara.dam1.coche;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-class ValidaMatriculaTest {
+@ExtendWith(MockitoExtension.class)
+ class CocheServiceTest {
 
+    @InjectMocks
     private final CocheService service = new CocheService(null);
 
     @ParameterizedTest
@@ -19,22 +27,17 @@ class ValidaMatriculaTest {
 
     @ParameterizedTest
     @CsvSource({
-            "123ABC",       // faltan dígitos
-            "12345ABC",     // sobran dígitos
-            "1234AB",       // faltan letras
-            "1234A1C",      // contiene número en letras
-            "1234-ABC",     // guion
-            "'1234 ABC'",   // espacio
-            "1234abc"       // minúsculas
+            "123ABC",        // faltan dígitos
+            "12345ABC",       // sobran dígitos
+            "1234AB",          // faltan letras
+            "1234A1C",          // contiene número en letras
+            "1234-ABC",          // guion
+            "'1234 ABC'",         // espacio (comillas para que CSV lo lea bien)
+            "1234abc"              // minúsculas
     })
-    void matriculasInvalidasTest(String matricula) {
+    void matriculasInvalidas(String matricula) {
         assertFalse(service.validaMatricula(matricula));
     }
-}
-
-
-
-
 
 
 }
